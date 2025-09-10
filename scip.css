@@ -1,8 +1,15 @@
+.body {
+    margin: 0;
+}
+
 .container {
-    margin: 50px 100px;
+    margin: 250px 350px;
 }
 
 .header {
-    background-image: url(foning.png);
-    
+    background-image: url(fon.png);
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
