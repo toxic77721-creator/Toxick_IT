@@ -1,9 +1,10 @@
 .body {
     margin: 0;
+    font-family: "Open Sans", sans-serif;
 }
 
 .container {
-    margin: 250px 350px;
+    margin: 45px 125px;
 }
 
 .header {
@@ -13,3 +14,10 @@
     background-size: cover;
 }
 
+.header-down {
+    color: rgb(51, 110, 66);
+    font-size: 85px;
+    font-weight: 700;
+    margin: 20px;
+
+}
