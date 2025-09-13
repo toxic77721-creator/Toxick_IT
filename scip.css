@@ -9,15 +9,36 @@
 
 .header {
     background-image: url(fon.png);
-    height: 100px;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .header-down {
-    color: rgb(51, 110, 66);
+    position: relative;
+}
+
+.header-title {
+    color: rgb(19, 184, 68);
     font-size: 85px;
     font-weight: 700;
     margin: 20px;
-
+    text-align: center;
+    position: static;
 }
+
+.menu-btn {
+    background-color: #3e991a;
+    color: #07140c;
+    font-weight: bold;
+    padding: 15px 60px;
+    border: s #179e44;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    transition: 0.5s;
+    display: inline-block;
+    margin-top: 300px;
+    margin-left: 740px;
+    transform: translateY(-20px);
+}
+
