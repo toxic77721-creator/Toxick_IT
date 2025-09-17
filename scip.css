@@ -14,12 +14,25 @@ body {
 
 h1 {
     position: absolute;
-    top: 50px;
-    left: 100px;
+    top: 40px;
+    left: 1250px;
+    font-size: 70px;
+    color: rgb(2, 0, 1);
 }
 
-button {
+#start {
     position: absolute;
-    top: 150px;
-    left: 150px;
+    top: 870px;
+    left: 420px;
+    padding: 5px 50px;
+    background-color: rgb(85, 2, 30);
+    border: 2px solid #070000;
+    transition: background-color 1.5s;
+    font-size: 18px;
+    color: #000000;
+    cursor: pointer;
+}
+
+#start:hover {
+    background-color: rgb(156, 29, 72);
 }
