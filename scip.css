@@ -28,7 +28,7 @@ h1 {
     background-color: rgb(85, 2, 30);
     border: 2px solid #070000;
     transition: background-color 1.5s;
-    border-radius: 15px;
+    border-radius: 20px;
     font-size: 18px;
     color: #000000;
     cursor: pointer;
