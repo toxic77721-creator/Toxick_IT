@@ -27,7 +27,7 @@ h1 {
 .cell {
     background-color: rgb(82, 5, 30);
     display: flex;
-    color: #f7f7f7;
+    color: #000000;
     font-size: 2rem;
     margin-top: 1px;
     margin-bottom: 1px;
