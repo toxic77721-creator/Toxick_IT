@@ -1,21 +1,22 @@
 var winningCombos = [
-  [0,1,2], [3,4,5], [6,7,8],
-  [0,3,6], [1,4,7], [2,5,8],
-  [0,4,8], [2,4,6]
+  [0,1,2],[3,4,5],[6,7,8],
+  [0,3,6],[1,4,7],[2,5,8],
+  [0,4,8],[2,4,6]
 ];
 
 var cells = document.querySelectorAll('.cell');
 var restartButton = document.getElementById("restart");
 
-var boerd;
+var board;
 var currentPlayer;
 var gameOver;
+var lastMoves; // останні ходи кожного гравця
 
 function init() {
-    boerd = ['','','','','','','','',''];
+    board = ['','','','','','','','',''];
     currentPlayer = "X";
     gameOver = false;
-    console.log(boerd)
+    lastMoves = { "X": [], "O": [] };
 
     for (var i = 0; i < cells.length; i++) {
         cells[i].innerText = "";
@@ -24,28 +25,46 @@ function init() {
             cells[i].setAttribute('data-index', i);
         }
     }
+
+    
 }
 
 function clickCell() {
     var idx = parseInt(this.getAttribute('data-index'), 10);
 
-    if (boerd[idx] === '' && !gameOver) {
-        boerd[idx] = currentPlayer;
+    if (board[idx] === '' && !gameOver) {
+        // ставимо хід
+        board[idx] = currentPlayer;
         this.innerText = currentPlayer;
 
+        // додаємо хід у масив останніх ходів
+        lastMoves[currentPlayer].push(idx);
+
+        // перевірка перемоги перед видаленням старих ходів
         if (checkWin()) {
-            alert("Игрок " + currentPlayer + " Победил!");
+            alert("Гравець " + currentPlayer + " переміг!");
             gameOver = true;
             return;
         }
 
-        if (boerd.indexOf("") === -1) {
-            alert("Ничья!");
+        // перевірка нічиї
+        if (board.indexOf("") === -1) {
+            alert("Нічия!");
             gameOver = true;
             return;
         }
 
+        // видалення найстарішого ходу, якщо їх більше 3
+        if (lastMoves[currentPlayer].length > 3) {
+            var removeId = lastMoves[currentPlayer][0]; // перший хід
+            lastMoves[currentPlayer] = lastMoves[currentPlayer].slice(1); // новий масив без першого
+            board[removeId] = '';
+            cells[removeId].innerText = '';
+        }
+
+        // зміна гравця
         currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';
+        document.getElementById('current-player').innerText = currentPlayer;
     }
 }
 
@@ -54,17 +73,19 @@ function checkWin() {
         var combo = winningCombos[i];
         var a = combo[0], b = combo[1], c = combo[2];
 
-        if (boerd[a] === currentPlayer && boerd[b] === currentPlayer && boerd[c] === currentPlayer) {
+        if (board[a] === currentPlayer && board[b] === currentPlayer && board[c] === currentPlayer) {
             return true;
         }
     }
     return false;
 }
 
+// підключення кліків
 for (var i = 0; i < cells.length; i++) {
     cells[i].addEventListener('click', clickCell);
 }
 
 restartButton.addEventListener('click', init);
 
+// старт гри
 init();
